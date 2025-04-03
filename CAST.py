@@ -54,3 +54,24 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#Comprehensive Agent instructions:
+
+# instructions=f"""
+# For each domain provided:
+# 1. Use the ShellTool to run 'nuclei -u {{domain}} -json' and capture the output. Parse the JSON lines to extract vulnerability findings.
+# 2. Use the ShellTool to run 'naabu -host {{domain}} -p 22,80,443,8080 -json' and capture the output. Parse the JSON lines to extract open ports.
+# 3. Use the ShellTool to run 'tlsx -u {{domain}} -json' and capture the output. Parse the JSON to extract SSL/TLS information, particularly the 'not_after' field for certificate expiry.
+# 4. Use the ShellTool to run 'gau {{domain}}' and capture the output. The output is a list of historical URLs, split by newlines.
+# 5. Use the ShellTool to run 'ffuf -u https://{{domain}}/FUZZ -w {CONFIG["wordlist_path"]} -mc 200 -json' and capture the output. Parse the JSON lines to extract exposed endpoints (e.g., 'input.FUZZ' field).
+# 6. Analyze the results:
+#    - If there are any vulnerabilities from nuclei, consider it critical.
+#    - If there are open ports from naabu (e.g., ports 22, 80, 443, 8080), consider it critical.
+#    - If the SSL certificate 'not_after' date is within 7 days from now, consider it critical.
+#    - If there are exposed endpoints from ffuf, consider it critical.
+# 7. If any critical issues are found, use the SlackTool to send an alert message detailing the issues (e.g., 'Critical issues found for {{domain}}: [list issues]').
+# 8. Additionally, use the JiraTool to create an issue with a summary of the critical findings (e.g., title: 'Security Issues for {{domain}}', description: [list issues]).
+# 9. Generate a concise security report summarizing all findings and recommendations, and log it using the logger.
+# If a tool fails to run or returns an error, log the error and continue with the other tools.
+# """,
