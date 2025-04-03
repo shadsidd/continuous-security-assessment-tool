@@ -26,8 +26,8 @@ A Python-based security assessment tool for continous automated security scannin
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
-cd [repository-name]
+git clone [https://github.com/shadsidd/continuous-security-assessment-tool.git]
+cd [https://github.com/shadsidd/continuous-security-assessment-tool]
 ```
 
 2. Install Python dependencies:
