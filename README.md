@@ -22,6 +22,10 @@ A Python-based security assessment tool for continous automated security scannin
 - gau
 - ffuf
 
+# Output 
+![Screenshot 2025-04-04 at 12 33 20 PM](https://github.com/user-attachments/assets/5380f202-e54b-47cb-875b-766f7e9f9928)
+
+
 ## Installation
 
 1. Clone the repository:
